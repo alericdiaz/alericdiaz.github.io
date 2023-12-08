@@ -60,9 +60,9 @@ $(function () {
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
-    createCollectable("kennedi",300,100,0.05,1)
-    createCollectable("diamond",1300,400,0.05,1);
-    createCollectable("grace",1300,125,0.05,1);
+    createCollectable("money",300,100,0.05,1)
+    createCollectable("money",1300,400,0.05,1);
+    createCollectable("money",1300,125,0.05,1);
 
 
     // TODO 3

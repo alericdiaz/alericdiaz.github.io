@@ -25,17 +25,15 @@ var init = function (window) {
         // TODO 2 : Create a function that draws a circle 
         function drawCircle (){
             circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-            physikz.addRandomVelocity(circle, canvas, 10, 10);
+            physikz.addRandomVelocity(circle, canvas);
             view.addChild(circle);
             circles.push(circle);
         };
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
+        for (var i = 0; i < 100; i++){
+            drawCircle();
+        }
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -54,14 +52,17 @@ var init = function (window) {
             physikz.updatePosition(circles[3]);
             physikz.updatePosition(circles[4]);
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           game.circleCheckPosition(circles[0]);
-           game.circleCheckPosition(circles[1]);
-           game.circleCheckPosition(circles[2]);
-           game.circleCheckPosition(circles[3]);
-           game.circleCheckPosition(circles[4]);
+           game.checkCirclePosition(circles[0]);
+           game.checkCirclePosition(circles[1]);
+           game.checkCirclePosition(circles[2]);
+           game.checkCirclePosition(circles[3]);
+           game.checkCirclePosition(circles[4]);
 
             // TODO 8 / 9 : Iterate over the array
-           
+            for (var i = 0; i < 100; i++){
+                physikz.updatePosition(circles[i]);
+                game.checkCirclePosition(circles[i]);
+            }
             
         }
     
@@ -81,7 +82,12 @@ var init = function (window) {
             if ( circle.x < 0 ){
                 circle.x = 0;
             }
-
+            if ( circle.y > canvas.height ){
+                circle.y = 0;
+            }
+            if ( circle.y < 0){
+                circle.y = 0;
+            }
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }

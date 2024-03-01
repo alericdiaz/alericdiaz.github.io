@@ -23,16 +23,16 @@ var init = function (window) {
         var circle; // holds a single circle
         var circles = []; // holds all circles in an array
         // TODO 2 : Create a function that draws a circle 
-        function drawCircle (){
-            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-            physikz.addRandomVelocity(circle, canvas, 10, 10);
-            view.addChild(circle);
-            circles.push(circle);
+        function drawCircle (){ 
+            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2); // Uses existing function to draw circle of random size, color, and location on the canvas, also stores the output of the function.
+            physikz.addRandomVelocity(circle, canvas, 10, 10); //Uses the physikz library to add a random velocity and direction.
+            view.addChild(circle); // Adds circle as child of view so the circle appears on screen.
+            circles.push(circle); // Saves the circle to an array of circles by pushing it to the end of the array.
         };
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        for (var i = 0; i < 100; i++){
-            drawCircle();
+        for (var i = 0; i < 100; i++){ // A loop that creates 100 circles on the canvas
+            drawCircle(); // Declares the drawCircle function.
         }
 
         ////////////////////////////////////////////////////////////
@@ -46,14 +46,14 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-            //GIVE REASON
+            // TODO 4 was removed in order to avoid DRY, added into a loop.
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           //GIVE REASON FOR DELETION
+           //GIVE TODO 5 was removed in order to avoid DRY, added into a loop.
 
             // TODO 8 / 9 : Iterate over the array
-            for (var i = 0; i < 100; i++){
-                physikz.updatePosition(circles[i]);
-                game.checkCirclePosition(circles[i]);
+            for (var i = 0; i < 100; i++){ // A loop that adds a random velocity and direction to every circle in the array, as well as checking the circles position.
+                physikz.updatePosition(circles[i]); // Uses the physikz library to add a random velocity and direction to every circle in the array.
+                game.checkCirclePosition(circles[i]); // Checks the position of every circle in the array.
             }
             
         }
@@ -71,14 +71,14 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            if ( circle.x < 0 ){
-                circle.x = canvas.width;
+            if ( circle.x < 0 ){ // Checks whether the x position passes the right side of the screen.
+                circle.x = canvas.width; // Assigns the x position of the circle to the right side of the canvas.
             }
-            if ( circle.y > canvas.height ){
-                circle.y = 0;
+            if ( circle.y > canvas.height ){ // Checks whether the y position passes the bottom of the screen.
+                circle.y = 0; // Assigns the y position of the circle to the top of the canvas.
             }
-            if ( circle.y < 0){
-                circle.y = canvas.height;
+            if ( circle.y < 0){ // Checks whether the y position passes the top of the screen.
+                circle.y = canvas.height; // Assigns the y position of the circle to the bottom of the canvas.
             }
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////

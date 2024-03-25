@@ -97,7 +97,14 @@ var background = function (window) {
             }
             
             // TODO 4: Part 2 - Parallax
-            
+            for(var i = 0; i < buildings.length; i++){//for loop that will iterate through the buildings array
+                var building = buildings[i];//variable that holds each element of the array
+                building.x = building.x - 1;//moves the buildings left
+
+                if(building.x < -100){//if statement that checks whether the buildings have left the screen
+                    building.x = canvasWidth;//moves the buildings to the right side of the canvas
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         

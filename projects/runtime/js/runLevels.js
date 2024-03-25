@@ -18,7 +18,12 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-
+    var hitZoneSize = 25;//variable that creates the size of the hit zone
+    var damageFromObstacle = 10;//variable that decides the damage of the obstacle
+    var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);//uses createObstacle function and creates hit zone size and damage
+    sawBladeHitZone.x = 400;//sets the x value of the sawBladeHitZone
+    sawBladeHitZone.y = groundY - 120;//sets the y value of the sawBladeHitZone
+    game.addGameItem(sawBladeHitZone);//adds sawBladeHitZone as game item of game
     
 
     function startLevel() {

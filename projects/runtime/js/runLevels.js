@@ -35,26 +35,58 @@ var runLevels = function (window) {
     createSawBlade(700, groundY - 120);//calls createSawBlade function
     createSawBlade(900, groundY - 120);//calls createSawBlade function
 
-    var enemy = game.createGameItem("enemy", 25);//creates variable called enemy, creates game item "enemy"
-    var redSquare = draw.rect(50, 50, "red");//variable that draws enemy
-    redSquare.x = -25;//sets x value in relation to hit zone
-    redSquare.y = -25;//sets y value in relation to hit zone
-    enemy.addChild(redSquare);//adds redSquare as child of enemy
-    enemy.x = 400;//sets enemy x value
-    enemy.y = groundY - 50;//sets enemy y value
-    game.addGameItem(enemy);//adds enemy as gameItem of game
-    enemy.velocityX = -1;//moves enemy left
-    enemy.rotationalVelocity = 0;//rotates the enemy
-
-    enemy.onPlayerCollision = function () {
-      game.changeIntegrity(-10)
-    };
-    enemy.onProjectileCollision = function (){
-      game.increasedScore(100);
-      //enemy.fadeOut();
-      //enemy.shrink();
-      //enemy.flyTo(0, 0);
+    function createEnemy (x, y){
+      var enemy = game.createGameItem("enemy", 25);//creates variable called enemy, creates game item "enemy"
+      var redSquare = draw.rect(50, 50, "red");//variable that draws enemy
+      redSquare.x = -25;//sets x value in relation to hit zone
+      redSquare.y = -25;//sets y value in relation to hit zone
+      enemy.addChild(redSquare);//adds redSquare as child of enemy
+      enemy.x = x;//sets enemy x value
+      enemy.y = y;//sets enemy y value
+      game.addGameItem(enemy);//adds enemy as gameItem of game
+      enemy.velocityX = -3;//moves enemy left
+      enemy.rotationalVelocity = 0;//rotates the enemy
+  
+      enemy.onPlayerCollision = function () {//function that runs when the player collides with an enemy
+        game.changeIntegrity(-10)//removes health from player
+      };
+      enemy.onProjectileCollision = function (){//function that runs when a projectile collides with an enemy
+        game.increasedScore(100); //adds a value to the game score
+        enemy.fadeOut();
+        //enemy.shrink();
+        //enemy.flyTo(0, 0);
+      }
     }
+
+    createEnemy(600, groundY - 50);//calls createEnemy function
+    createEnemy(800, groundY - 50);//calls createEnemy function
+
+    function createReward (x, y){
+      var reward = game.createGameItem("enemy", 25);//creates variable called reward, creates game item "enemy"
+      var blueSquare = draw.rect(50, 50, "blue");//variable that draws reward
+      blueSquare.x = -25;//sets x value in relation to hit zone
+      blueSquare.y = -25;//sets y value in relation to hit zone
+     reward.addChild(blueSquare);//adds blueSquare as child of reward
+     reward.x = x;//sets reward x value
+     reward.y = y;//sets reward y value
+      game.addGameItem(enemy);//adds reward as gameItem of game
+     reward.velocityX = -3;//moves reward left
+     reward.rotationalVelocity = 0;//rotates the reward
+  
+     reward.onPlayerCollision = function () {//function that runs when the player collides with a reward
+        game.changeIntegrity(10)//adds health to player
+        reward.shrink();//shrinks the reward
+      };
+     reward.onProjectileCollision = function (){//function that runs when a projectile collides with a reward
+        //game.increasedScore(100); //adds a value to the game score
+        //enemy.fadeOut();
+       //reward.shrink();
+        //enemy.flyTo(0, 0);
+      }
+    }
+
+    createReward(400, groundY - 100);//calls createReward function
+
 
 
     function startLevel() {

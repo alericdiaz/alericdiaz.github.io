@@ -37,21 +37,23 @@ var runLevels = function (window) {
 
     function createEnemy (x, y){
       var enemy = game.createGameItem("enemy", 25);//creates variable called enemy, creates game item "enemy"
-      var redSquare = draw.rect(50, 50, "red");//variable that draws enemy
-      redSquare.x = -25;//sets x value in relation to hit zone
-      redSquare.y = -25;//sets y value in relation to hit zone
+      var redSquare = draw.bitmap('img/soap.png');//variable that draws enemy
+      redSquare.x = -50;//sets x value in relation to hit zone
+      redSquare.y = -35;//sets y value in relation to hit zone
       enemy.addChild(redSquare);//adds redSquare as child of enemy
       enemy.x = x;//sets enemy x value
       enemy.y = y;//sets enemy y value
       game.addGameItem(enemy);//adds enemy as gameItem of game
       enemy.velocityX = -3;//moves enemy left
       enemy.rotationalVelocity = 0;//rotates the enemy
+      redSquare.scaleX = 0.1;//sets the scale of enemy x
+      redSquare.scaleY = 0.1;//sets the scale of enemy y
   
       enemy.onPlayerCollision = function () {//function that runs when the player collides with an enemy
         game.changeIntegrity(-10)//removes health from player
       };
       enemy.onProjectileCollision = function (){//function that runs when a projectile collides with an enemy
-        game.increasedScore(100); //adds a value to the game score
+        game.increaseScore(100); //adds a value to the game score
         enemy.fadeOut();
         //enemy.shrink();
         //enemy.flyTo(0, 0);
@@ -59,7 +61,7 @@ var runLevels = function (window) {
     }
 
     createEnemy(600, groundY - 50);//calls createEnemy function
-    createEnemy(800, groundY - 50);//calls createEnemy function
+    createEnemy(1000, groundY - 50);//calls createEnemy function
 
     function createReward (x, y){
       var reward = game.createGameItem("enemy", 25);//creates variable called reward, creates game item "enemy"
@@ -69,7 +71,7 @@ var runLevels = function (window) {
      reward.addChild(blueSquare);//adds blueSquare as child of reward
      reward.x = x;//sets reward x value
      reward.y = y;//sets reward y value
-      game.addGameItem(enemy);//adds reward as gameItem of game
+      game.addGameItem(reward);//adds reward as gameItem of game
      reward.velocityX = -3;//moves reward left
      reward.rotationalVelocity = 0;//rotates the reward
   

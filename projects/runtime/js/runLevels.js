@@ -31,9 +31,6 @@ var runLevels = function (window) {
       obstacleImage.x = -25;//sets x value in relation to hit zone
       obstacleImage.y = -25;//sets y value in relation to hit zone
     }
-    createSawBlade(400, groundY - 120);//calls createSawBlade function
-    createSawBlade(700, groundY - 120);//calls createSawBlade function
-    createSawBlade(900, groundY - 120);//calls createSawBlade function
 
     function createEnemy (x, y){
       var enemy = game.createGameItem("enemy", 25);//creates variable called enemy, creates game item "enemy"
@@ -60,9 +57,6 @@ var runLevels = function (window) {
       }
     }
 
-    createEnemy(600, groundY - 50);//calls createEnemy function
-    createEnemy(1000, groundY - 50);//calls createEnemy function
-
     function createReward (x, y){
       var reward = game.createGameItem("enemy", 25);//creates variable called reward, creates game item "enemy"
       var blueSquare = draw.rect(50, 50, "blue");//variable that draws reward
@@ -81,13 +75,41 @@ var runLevels = function (window) {
       };
      reward.onProjectileCollision = function (){//function that runs when a projectile collides with a reward
         //game.increasedScore(100); //adds a value to the game score
-        //enemy.fadeOut();
+        //reward.fadeOut();
        //reward.shrink();
-        //enemy.flyTo(0, 0);
+        //reward.flyTo(0, 0);
       }
     }
 
+    function createMarker (x, y){
+      var marker = game.createGameItem("enemy", 25);//creates variable called marker, creates game item "enemy"
+      var yellowSquare = draw.rect(50, 50, "yellow");//variable that draws marker
+      yellowSquare.x = -25;//sets x value in relation to hit zone
+      yellowSquare.y = -25;//sets y value in relation to hit zone
+     marker.addChild(yellowSquare);//adds yellowSquare as child of marker
+     marker.x = x;//sets marker x value
+     marker.y = y;//sets marker y value
+      game.addGameItem(marker);//adds marker as gameItem of game
+     marker.velocityX = -3;//moves marker left
+     marker.rotationalVelocity = 0;//rotates the marker
+  
+     marker.onPlayerCollision = function () {//function that runs when the player collides with a marker
+        game.changeIntegrity(10)//adds health to player
+        startLevel();//calls startLevel function
+        marker.flyTo(0, 0);
+      };
+    }
+
+    //Function calls
+    createSawBlade(400, groundY - 120);//calls createSawBlade function
+    createSawBlade(700, groundY - 120);//calls createSawBlade function
+    createSawBlade(900, groundY - 120);//calls createSawBlade function
+    createEnemy(600, groundY - 50);//calls createEnemy function
+    createEnemy(1000, groundY - 50);//calls createEnemy function
     createReward(400, groundY - 100);//calls createReward function
+    createMarker(2000, groundY - 100);//calls createMarker function
+
+
 
 
 

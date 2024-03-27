@@ -101,13 +101,13 @@ var runLevels = function (window) {
     }
 
     //Function calls
-    createSawBlade(400, groundY - 120);//calls createSawBlade function
-    createSawBlade(700, groundY - 120);//calls createSawBlade function
-    createSawBlade(900, groundY - 120);//calls createSawBlade function
-    createEnemy(600, groundY - 50);//calls createEnemy function
-    createEnemy(1000, groundY - 50);//calls createEnemy function
-    createReward(400, groundY - 100);//calls createReward function
-    createMarker(2000, groundY - 100);//calls createMarker function
+    //createSawBlade(500, groundY - 120);//calls createSawBlade function
+    //createSawBlade(1000, groundY - 120);//calls createSawBlade function
+    //createSawBlade(1500, groundY - 120);//calls createSawBlade function
+    //createEnemy(800, groundY - 50);//calls createEnemy function
+    //createEnemy(13000, groundY - 50);//calls createEnemy function
+    //createReward(2000, groundY - 100);//calls createReward function
+    //createMarker(2500, groundY - 100);//calls createMarker function
 
 
 
@@ -115,7 +115,23 @@ var runLevels = function (window) {
 
     function startLevel() {
       // TODO 13 goes below here
-
+      var level = levelData[currentLevel];
+      var levelObjects = level.gameItems
+      for (var i = 0; i < levelObjects.length; i++){
+        var item = levelObjects[i];
+        if (item.type === "sawblade"){
+          createSawBlade(item.x, item.y);
+        }
+        if (item.type === "enemy"){
+          createEnemy(item.x, item.y);
+        }
+        if (item.type === "reward"){
+          createReward(item.x, item.y);
+        }
+        if (item.type === "marker"){
+          createMarker(item.x, item.y);
+        }
+      }
 
 
       //////////////////////////////////////////////

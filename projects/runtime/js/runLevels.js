@@ -58,20 +58,23 @@ var runLevels = function (window) {
       }
     }
 
-    function createReward (x, y){
+    function createReward (x, y, image, moveX, moveY, velocity, scaleX, scaleY, score, health){
       var reward = game.createGameItem("enemy", 25);//creates variable called reward, creates game item "enemy"
-      var blueSquare = draw.rect(50, 50, "blue");//variable that draws reward
-      blueSquare.x = -25;//sets x value in relation to hit zone
-      blueSquare.y = -25;//sets y value in relation to hit zone
+      var blueSquare = draw.bitmap(image);//variable that draws reward
+      blueSquare.x = moveX;//sets x value in relation to hit zone
+      blueSquare.y = moveY;//sets y value in relation to hit zone
      reward.addChild(blueSquare);//adds blueSquare as child of reward
      reward.x = x;//sets reward x value
      reward.y = y;//sets reward y value
       game.addGameItem(reward);//adds reward as gameItem of game
-     reward.velocityX = -3;//moves reward left
+     reward.velocityX = velocity;//moves reward left
      reward.rotationalVelocity = 0;//rotates the reward
+     blueSquare.scaleX = scaleX;//sets the scale of enemy x
+      blueSquare.scaleY = scaleY;//sets the scale of enemy y
   
      reward.onPlayerCollision = function () {//function that runs when the player collides with a reward
-        game.changeIntegrity(10)//adds health to player
+        game.changeIntegrity(health)//adds health to player
+        game.increaseScore(score); //adds a value to the game score
         reward.shrink();//shrinks the reward
       };
      reward.onProjectileCollision = function (){//function that runs when a projectile collides with a reward
@@ -127,7 +130,7 @@ var runLevels = function (window) {
           createEnemy(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.score);
         }
         if (item.type === "reward"){
-          createReward(item.x, item.y);
+          createReward(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.score, item.health);
         }
         if (item.type === "marker"){
           createMarker(item.x, item.y);

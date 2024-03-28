@@ -20,7 +20,7 @@ var makeLevelData = function (window) {
           { type: "obstacle", x: 1000, y: groundY - 120, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 10 },
           { type: "enemy", x: 1300, y: groundY - 50, image: 'img/soap.png', moveX: -50, moveY: -35, velocity: -3, scaleX: 0.1, scaleY: 0.1, damage: -10, score: 50 },
           { type: "obstacle", x: 1500, y: groundY - 120, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 10 },
-          { type: "reward", x: 2000, y: groundY - 100 },
+          { type: "reward", x: 2000, y: groundY - 100, image: 'img/baggedTrash.png', moveX: -25, moveY: -40, velocity: -3, scaleX: 0.1, scaleY: 0.1, score: 100, health: 10 },
           { type: "marker", x: 2500, y: groundY - 100 },
         ],
       },

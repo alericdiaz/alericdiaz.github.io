@@ -15,11 +15,11 @@ var makeLevelData = function (window) {
         number: 1,
         speed: -3,
         gameItems: [
-          { type: "obstacle", x: 500, y: groundY - 120 },
+          { type: "obstacle", x: 500, y: groundY - 120, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 10  },
           { type: "enemy", x: 800, y: groundY - 50, image: 'img/soap.png', moveX: -50, moveY: -35, velocity: -3, scaleX: 0.1, scaleY: 0.1, damage: -10, score: 50 },
-          { type: "obstacle", x: 1000, y: groundY - 120 },
+          { type: "obstacle", x: 1000, y: groundY - 120, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 10 },
           { type: "enemy", x: 1300, y: groundY - 50, image: 'img/soap.png', moveX: -50, moveY: -35, velocity: -3, scaleX: 0.1, scaleY: 0.1, damage: -10, score: 50 },
-          { type: "obstacle", x: 1500, y: groundY - 120 },
+          { type: "obstacle", x: 1500, y: groundY - 120, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 10 },
           { type: "reward", x: 2000, y: groundY - 100 },
           { type: "marker", x: 2500, y: groundY - 100 },
         ],
@@ -29,9 +29,9 @@ var makeLevelData = function (window) {
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "obstacle", x: 400, y: groundY },
-          { type: "obstacle", x: 600, y: groundY },
-          { type: "obstacle", x: 900, y: groundY },
+          { type: "obstacle", x: 400, y: groundY, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 20 },
+          { type: "obstacle", x: 600, y: groundY, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 20 },
+          { type: "obstacle", x: 900, y: groundY, image: 'img/sawblade.png', moveX: -25, moveY: -25, rotationalVelocity: 3, hitZone: 25, damage: 20 },
         ],
       },
     ];

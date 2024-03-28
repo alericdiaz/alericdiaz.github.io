@@ -19,18 +19,18 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    function createObstacle(x, y){
-      var hitZoneSize = 25;//variable that creates the size of the hit zone
-      var damageFromObstacle = 10;//variable that decides the damage of the obstacle
+    function createObstacle(x, y, image, moveX, moveY, rotationalVelocity, hitZone, damage){
+      var hitZoneSize = hitZone;//variable that creates the size of the hit zone
+      var damageFromObstacle = damage;//variable that decides the damage of the obstacle
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);//uses createObstacle function and creates hit zone size and damage
       obstacleHitZone.x = x;//sets the x value of the obstacleHitZone
       obstacleHitZone.y = y;//sets the y value of the obstacleHitZone
       game.addGameItem(obstacleHitZone);//adds obstacleHitZone as gameItem to game
-      var obstacleImage = draw.bitmap("img/sawblade.png");//creates a variable that inserts an image of a sawblade
+      var obstacleImage = draw.bitmap(image);//creates a variable that inserts an image of a sawblade
       obstacleHitZone.addChild(obstacleImage);//adds obstacleImage variable as child of obstacleHitZone
-      obstacleImage.x = -25;//sets x value in relation to hit zone
-      obstacleImage.y = -25;//sets y value in relation to hit zone
-      obstacleHitZone.rotationalVelocity = 3
+      obstacleImage.x = moveX;//sets x value in relation to hit zone
+      obstacleImage.y = moveY;//sets y value in relation to hit zone
+      obstacleHitZone.rotationalVelocity = rotationalVelocity
     }
 
     function createEnemy (x, y, image, moveX, moveY, velocity, scaleX, scaleY, damage, score){
@@ -121,7 +121,7 @@ var runLevels = function (window) {
       for (var i = 0; i < levelObjects.length; i++){
         var item = levelObjects[i];
         if (item.type === "obstacle"){
-          createObstacle(item.x, item.y);
+          createObstacle(item.x, item.y, item.image, item.moveX, item.moveY, item.rotationalVelocity, item.hitZone, item.damage);
         }
         if (item.type === "enemy"){
           createEnemy(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.score);

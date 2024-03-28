@@ -19,38 +19,39 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    function createSawBlade(x, y){
+    function createObstacle(x, y){
       var hitZoneSize = 25;//variable that creates the size of the hit zone
       var damageFromObstacle = 10;//variable that decides the damage of the obstacle
-      var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);//uses createObstacle function and creates hit zone size and damage
-      sawBladeHitZone.x = x;//sets the x value of the sawBladeHitZone
-      sawBladeHitZone.y = y;//sets the y value of the sawBladeHitZone
-      game.addGameItem(sawBladeHitZone);//adds sawBladeHitZone as gameItem to game
+      var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);//uses createObstacle function and creates hit zone size and damage
+      obstacleHitZone.x = x;//sets the x value of the obstacleHitZone
+      obstacleHitZone.y = y;//sets the y value of the obstacleHitZone
+      game.addGameItem(obstacleHitZone);//adds obstacleHitZone as gameItem to game
       var obstacleImage = draw.bitmap("img/sawblade.png");//creates a variable that inserts an image of a sawblade
-      sawBladeHitZone.addChild(obstacleImage);//adds obstacleImage variable as child of sawBladeHitZone
+      obstacleHitZone.addChild(obstacleImage);//adds obstacleImage variable as child of obstacleHitZone
       obstacleImage.x = -25;//sets x value in relation to hit zone
       obstacleImage.y = -25;//sets y value in relation to hit zone
+      obstacleHitZone.rotationalVelocity = 3
     }
 
-    function createEnemy (x, y){
+    function createEnemy (x, y, image, moveX, moveY, velocity, scaleX, scaleY, damage, score){
       var enemy = game.createGameItem("enemy", 25);//creates variable called enemy, creates game item "enemy"
-      var redSquare = draw.bitmap('img/soap.png');//variable that draws enemy
-      redSquare.x = -50;//sets x value in relation to hit zone
-      redSquare.y = -35;//sets y value in relation to hit zone
+      var redSquare = draw.bitmap(image);//variable that draws enemy
+      redSquare.x = moveX;//sets x value in relation to hit zone
+      redSquare.y = moveY;//sets y value in relation to hit zone
       enemy.addChild(redSquare);//adds redSquare as child of enemy
       enemy.x = x;//sets enemy x value
       enemy.y = y;//sets enemy y value
       game.addGameItem(enemy);//adds enemy as gameItem of game
-      enemy.velocityX = -3;//moves enemy left
+      enemy.velocityX = velocity;//moves enemy left
       enemy.rotationalVelocity = 0;//rotates the enemy
-      redSquare.scaleX = 0.1;//sets the scale of enemy x
-      redSquare.scaleY = 0.1;//sets the scale of enemy y
+      redSquare.scaleX = scaleX;//sets the scale of enemy x
+      redSquare.scaleY = scaleY;//sets the scale of enemy y
   
       enemy.onPlayerCollision = function () {//function that runs when the player collides with an enemy
-        game.changeIntegrity(-10)//removes health from player
+        game.changeIntegrity(damage)//removes health from player
       };
       enemy.onProjectileCollision = function (){//function that runs when a projectile collides with an enemy
-        game.increaseScore(100); //adds a value to the game score
+        game.increaseScore(score); //adds a value to the game score
         enemy.fadeOut();
         //enemy.shrink();
         //enemy.flyTo(0, 0);
@@ -119,11 +120,11 @@ var runLevels = function (window) {
       var levelObjects = level.gameItems
       for (var i = 0; i < levelObjects.length; i++){
         var item = levelObjects[i];
-        if (item.type === "sawblade"){
-          createSawBlade(item.x, item.y);
+        if (item.type === "obstacle"){
+          createObstacle(item.x, item.y);
         }
         if (item.type === "enemy"){
-          createEnemy(item.x, item.y);
+          createEnemy(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.score);
         }
         if (item.type === "reward"){
           createReward(item.x, item.y);

@@ -85,20 +85,22 @@ var runLevels = function (window) {
       }
     }
 
-    function createMarker (x, y){
+    function createMarker (x, y, image, scale, moveX, moveY, health){
       var marker = game.createGameItem("enemy", 25);//creates variable called marker, creates game item "enemy"
-      var yellowSquare = draw.rect(50, 50, "yellow");//variable that draws marker
-      yellowSquare.x = -25;//sets x value in relation to hit zone
-      yellowSquare.y = -25;//sets y value in relation to hit zone
+      var yellowSquare = draw.bitmap(image);//variable that draws marker
+      yellowSquare.x = moveX;//sets x value in relation to hit zone
+      yellowSquare.y = moveY;//sets y value in relation to hit zone
      marker.addChild(yellowSquare);//adds yellowSquare as child of marker
      marker.x = x;//sets marker x value
      marker.y = y;//sets marker y value
       game.addGameItem(marker);//adds marker as gameItem of game
      marker.velocityX = -3;//moves marker left
      marker.rotationalVelocity = 0;//rotates the marker
+     yellowSquare.scaleX = scale;//sets the scale of enemy x
+      yellowSquare.scaleY = scale;//sets the scale of enemy y
   
      marker.onPlayerCollision = function () {//function that runs when the player collides with a marker
-        game.changeIntegrity(10)//adds health to player
+        game.changeIntegrity(health)//adds health to player
         startLevel();//calls startLevel function
         marker.flyTo(0, 0);
       };
@@ -133,7 +135,7 @@ var runLevels = function (window) {
           createReward(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.score, item.health);
         }
         if (item.type === "marker"){
-          createMarker(item.x, item.y);
+          createMarker(item.x, item.y, item.image, item.scale, item.moveX, item.moveY, item.health);
         }
       }
 

@@ -19,7 +19,7 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    function createObstacle(x, y, image, moveX, moveY, rotationalVelocity, hitZone, damage){
+    function createObstacle(x, y, image, moveX, moveY, rotationalVelocity, hitZone, damage, scale){
       var hitZoneSize = hitZone;//variable that creates the size of the hit zone
       var damageFromObstacle = damage;//variable that decides the damage of the obstacle
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);//uses createObstacle function and creates hit zone size and damage
@@ -30,6 +30,8 @@ var runLevels = function (window) {
       obstacleHitZone.addChild(obstacleImage);//adds obstacleImage variable as child of obstacleHitZone
       obstacleImage.x = moveX;//sets x value in relation to hit zone
       obstacleImage.y = moveY;//sets y value in relation to hit zone
+      obstacleImage.scaleX = scale;
+      obstacleImage.scaleY = scale;
       obstacleHitZone.rotationalVelocity = rotationalVelocity
     }
 
@@ -126,7 +128,7 @@ var runLevels = function (window) {
       for (var i = 0; i < levelObjects.length; i++){
         var item = levelObjects[i];
         if (item.type === "obstacle"){
-          createObstacle(item.x, item.y, item.image, item.moveX, item.moveY, item.rotationalVelocity, item.hitZone, item.damage);
+          createObstacle(item.x, item.y, item.image, item.moveX, item.moveY, item.rotationalVelocity, item.hitZone, item.damage, item.scale);
         }
         if (item.type === "enemy"){
           createEnemy(item.x, item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.score);

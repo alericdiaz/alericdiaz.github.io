@@ -62,6 +62,13 @@ var background = function (window) {
             moon.scaleX = 0.5; //scales the size of the image with x
             moon.scaleY = 0.5; //scales the size of the image with y
             background.addChild(moon); // data stored in moon variable is added as child of the background
+
+            //var dump = draw.bitmap("img/moon.png"); //draw.bitmap holds image, adding it to dump variable
+            //dump.x = canvasWidth - 250; //adds x to dump variable
+            //dump.y = groundY - 350; //sets y value to dump variable
+            //dump.scaleX = 0.5; //scales the size of the image with x
+            //dump.scaleY = 0.5; //scales the size of the image with y
+            //background.addChild(dump); // data stored in dump variable is added as child of the background
             
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) { //for loop that creates 5 buildings
@@ -77,7 +84,7 @@ var background = function (window) {
             tree = draw.bitmap("img/tree.png");
             tree.x = canvasWidth; //adds x to tree variable
             tree.y = groundY - 225; //sets y value to tree variable
-            background.addChild(tree); //adds the data stored in tree as child of backkround
+            background.addChild(tree); //adds the data stored in tree as child of background
             
         } // end of render function - DO NOT DELETE
         

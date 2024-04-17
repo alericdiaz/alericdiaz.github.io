@@ -43,8 +43,11 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'#52615a'); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
+            var backgroundFill = draw.bitmap("img/landfill1.jpg"); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
             background.addChild(backgroundFill); // takes variable backround fill and adds it as a child of the backround.
+
+            //var backgroundFill = draw.rect(canvasWidth,groundY,'#52615a'); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
+            //background.addChild(backgroundFill); // takes variable backround fill and adds it as a child of the backround
             
             // TODO 2: - Add a moon and starfield
 
@@ -63,13 +66,6 @@ var background = function (window) {
             moon.scaleY = 0.5; //scales the size of the image with y
             background.addChild(moon); // data stored in moon variable is added as child of the background
 
-            //var dump = draw.bitmap("img/moon.png"); //draw.bitmap holds image, adding it to dump variable
-            //dump.x = canvasWidth - 250; //adds x to dump variable
-            //dump.y = groundY - 350; //sets y value to dump variable
-            //dump.scaleX = 0.5; //scales the size of the image with x
-            //dump.scaleY = 0.5; //scales the size of the image with y
-            //background.addChild(dump); // data stored in dump variable is added as child of the background
-            
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) { //for loop that creates 5 buildings
                 var buildingHeight = 300 * Math.random();//variable that decides height of building

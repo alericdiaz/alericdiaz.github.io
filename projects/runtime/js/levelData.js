@@ -37,7 +37,7 @@ var makeLevelData = function (window) {
           { type: "enemy", x: 1750, y: groundY - 50, image: 'img/soap.png', moveX: -50, moveY: -35, velocity: -2.5, scaleX: 0.1, scaleY: 0.1, damage: -10, score: 50 },
           { type: "enemy", x: 2100, y: groundY - 50, image: 'img/soap.png', moveX: -50, moveY: -35, velocity: -2, scaleX: 0.1, scaleY: 0.1, damage: -10, score: 50 },
           { type: "obstacle", x: 2300, y: groundY, image: 'img/sponge.png', moveX: -25, moveY: -25, rotationalVelocity: 0, hitZone: 25, damage: 20, scale: 0.05 },
-          { type: "enemy", x: 2500, y: groundY - 50, image: 'img/soapman.png', moveX: -50, moveY: -35, velocity: -1.75, scaleX: 0.1, scaleY: 0.1, damage: -1000, score: 500 },
+          { type: "enemy", x: 2500, y: groundY - 50, image: 'img/soapman.png', moveX: -75, moveY: -50, velocity: -1.75, scaleX: 0.3, scaleY: 0.3, damage: -1000, score: 500 },
         ],
       },
     ];

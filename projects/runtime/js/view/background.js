@@ -43,7 +43,7 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.bitmap("img/landfill1.jpg"); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
+            var backgroundFill = draw.rect(canvasWidth, groundY, "black"); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
             background.addChild(backgroundFill); // takes variable backround fill and adds it as a child of the backround.
 
             //var backgroundFill = draw.rect(canvasWidth,groundY,'#52615a'); //creates variable backroundFill, stores rectangle as a function call, accepts x, y, and color.
@@ -58,20 +58,39 @@ var background = function (window) {
                 background.addChild(circle); // data stored in circle variable is added as child of the background
             }
 
-
+            /*
             var moon = draw.bitmap("img/moon.png"); //draw.bitmap holds image, adding it to moon variable
             moon.x = canvasWidth - 250; //adds x to moon variable
             moon.y = groundY - 350; //sets y value to moon variable
             moon.scaleX = 0.5; //scales the size of the image with x
             moon.scaleY = 0.5; //scales the size of the image with y
             background.addChild(moon); // data stored in moon variable is added as child of the background
+            */
+            var landFill = draw.bitmap("img/landfill1.jpg"); //draw.bitmap holds image, adding it to landFill variable
+            landFill.x = 0; //adds x to landFill variable
+            landFill.y = 0; //sets y value to landFill variable
+            landFill.scaleX = 0.5; //scales the size of the image with x
+            landFill.scaleY = 0.5; //scales the size of the image with y
+            background.addChild(landFill); // data stored in landFill variable is added as child of the background
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
+            /*
             for (var i = 0; i < 5; i++) { //for loop that creates 5 buildings
                 var buildingHeight = 300 * Math.random();//variable that decides height of building
                 var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1);//sets variable for single building, using buildingHeight for parameter 
                 building.x = 200 * i;//creates x value for building, multiplies by iteration
                 building.y = groundY - buildingHeight;//creates y value, subtracting building height to stay in place
+                background.addChild(building);//adds building variable as child of background
+                buildings.push(building);//takes building, pushes it to building array, saving the data
+            }
+            */
+            for (var i = 0; i < 5; i++) { //for loop that creates 5 buildings
+                var buildingHeight = 100 * Math.random();//variable that decides height of building
+                var building = draw.bitmap("img/trashPile.png");//sets variable for single building, using buildingHeight for parameter 
+                building.x = 200 * i;//creates x value for building, multiplies by iteration
+                building.y = groundY - buildingHeight;//creates y value, subtracting building height to stay in place
+                building.scaleX = 0.1;//scales the size of the image with x
+                building.scaleY = 0.1;//scales the size of the image with y
                 background.addChild(building);//adds building variable as child of background
                 buildings.push(building);//takes building, pushes it to building array, saving the data
             }

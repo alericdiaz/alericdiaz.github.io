@@ -66,12 +66,18 @@ var background = function (window) {
             moon.scaleY = 0.5; //scales the size of the image with y
             background.addChild(moon); // data stored in moon variable is added as child of the background
             */
-            var landFill = draw.bitmap("img/landfill1.jpg"); //draw.bitmap holds image, adding it to landFill variable
+            var landFill = draw.bitmap("img/landfill2.jpg"); //draw.bitmap holds image, adding it to landFill variable
             landFill.x = 0; //adds x to landFill variable
-            landFill.y = 0; //sets y value to landFill variable
-            landFill.scaleX = 0.5; //scales the size of the image with x
-            landFill.scaleY = 0.5; //scales the size of the image with y
-            background.addChild(landFill); // data stored in landFill variable is added as child of the background
+            landFill.y = -450; //sets y value to landFill variable
+            landFill.scaleX = 0.7; //scales the size of the image with x
+            landFill.scaleY = 0.7; //scales the size of the image with y
+            background.addChild(landFill); // data stored in landFill variable is added as child of the background\
+
+            var rulesBox = draw.rect(750, 65, '#2E2E2E'); //draw.bitmap holds image, adding it to rulesBox variable
+            rulesBox.x = 0;
+            rulesBox.y = groundY;
+            background.addChild(rulesBox); // data stored in rulesBox variable is added as child of the background
+            draw.rect()
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             /*
@@ -97,10 +103,10 @@ var background = function (window) {
             
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/emergencyAlert.png");
-            tree.scaleX = 0.1;//scales the size of the image with x
-            tree.scaleY = 0.1;//scales the size of the image with y
+            tree.scaleX = 0.05;//scales the size of the image with x
+            tree.scaleY = 0.05;//scales the size of the image with y
             tree.x = canvasWidth; //adds x to tree variable
-            tree.y = groundY - 185; //sets y value to tree variable
+            tree.y = groundY - 85; //sets y value to tree variable
             background.addChild(tree); //adds the data stored in tree as child of background
             
         } // end of render function - DO NOT DELETE

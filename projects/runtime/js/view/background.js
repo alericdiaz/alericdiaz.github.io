@@ -96,9 +96,11 @@ var background = function (window) {
             }
             
             // TODO 3: Part 1 - Add a tree
-            tree = draw.bitmap("img/tree.png");
+            tree = draw.bitmap("img/emergencyAlert.png");
+            tree.scaleX = 0.1;//scales the size of the image with x
+            tree.scaleY = 0.1;//scales the size of the image with y
             tree.x = canvasWidth; //adds x to tree variable
-            tree.y = groundY - 225; //sets y value to tree variable
+            tree.y = groundY - 185; //sets y value to tree variable
             background.addChild(tree); //adds the data stored in tree as child of background
             
         } // end of render function - DO NOT DELETE
